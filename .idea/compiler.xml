@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="schoolmanagementsystem" />
-        <module name="sms-login-service" />
         <module name="sms-discovery-sever-service" />
+        <module name="sms-login-service" />
+        <module name="schoolmanagementsystem (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,12 +21,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="schoolmanagementsystem" options="-parameters --add-modules java.sql" />
+      <module name="schoolmanagementsystem" options="-parameters" />
+      <module name="schoolmanagementsystem (1)" options="-parameters" />
       <module name="sms-discovery-client-service" options="-parameters" />
       <module name="sms-discovery-service" options="-parameters" />
       <module name="sms-discovery-sever-service" options="-parameters" />
       <module name="sms-loget-syllabus-service" options="-parameters" />
-      <module name="sms-login-service" options="-parameters --add-modules java.sql" />
+      <module name="sms-login-service" options="-parameters" />
     </option>
   </component>
 </project>

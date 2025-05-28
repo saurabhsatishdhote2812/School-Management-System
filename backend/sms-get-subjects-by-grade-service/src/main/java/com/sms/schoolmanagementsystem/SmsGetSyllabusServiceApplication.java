@@ -3,12 +3,11 @@ package com.sms.schoolmanagementsystem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class SchoolmanagementsystemApplication {
+public class SmsGetSyllabusServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SchoolmanagementsystemApplication.class, args);
+		SpringApplication.run(SmsGetSyllabusServiceApplication.class, args);
 	}
 
 }
