@@ -11,6 +11,7 @@ public class DatabaseConfig {
 
     @Autowired
     Environment env;
+
     public DataSource getDatabaseConnection() {
         return DataSourceBuilder.create()
                 .url(env.getProperty("spring.datasource.url"))
@@ -19,5 +20,4 @@ public class DatabaseConfig {
                 .driverClassName(env.getProperty("spring.datasource.driver-class-name"))
                 .build();
     }
-
 }

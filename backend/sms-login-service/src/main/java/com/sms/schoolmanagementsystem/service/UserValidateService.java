@@ -2,7 +2,6 @@ package com.sms.schoolmanagementsystem.service;
 
 import com.sms.schoolmanagementsystem.dao.UserValidate;
 import com.sms.schoolmanagementsystem.util.Utility;
-import jdk.jshell.execution.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
