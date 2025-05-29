@@ -23,8 +23,7 @@ const LoginPage = () => {
             }
         });
         if (response.data === 'PASS') {
-        navigate('/dashboard'); // Redirect on success
-        console.log("PASS")
+        navigate('/subjects'); // Redirect on success
       } else {
         alert('Login failed. Please check your credentials!');
       }

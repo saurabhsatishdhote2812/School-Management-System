@@ -1,7 +1,7 @@
 
 import './App.css';
 import LoginPage from './LoginPage/LoginPage';
-import Dashboard from './Dashboard';
+import SubjectCards from './SubjectCards';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -10,7 +10,7 @@ function App() {
    <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/subjects" element={<SubjectCards />} />
       </Routes>
     </Router>
   );
