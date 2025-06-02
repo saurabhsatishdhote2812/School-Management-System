@@ -1,88 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./SubjectCards.css";
 
 const subjects = [
-  "Maths",
+  "Mathematics",
   "Science",
   "English",
   "Geography",
   "History",
 ];
 
-const SubjectCard = ({ name, onSelect }) => {
+const SubjectCard = ({ name }) => {
+  const navigate = useNavigate();
+  
   return (
-    <div className="subject-card" onClick={() => onSelect(name)}>
+    <div className="subject-card" onClick={() => navigate(`/syllabus/${name}`)}>
       <h2>{name}</h2>
     </div>
   );
 };
 
-const SubjectCards = () => {
-  const [selectedSubject, setSelectedSubject] = useState(null);
-  const [syllabus, setSyllabus] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const fetchSyllabus = async (subjectName) => {
-    setSelectedSubject(subjectName);
-    setSyllabus(null);
-    setError(null);
-    setLoading(true);
-
-    try {
-      const response = await fetch(`http://localhost:8083/sms/getSyllabus/${subjectName}`);
-      const data = await response.json(); // Convert response to JSON
-
-    // Extract units & corresponding topics
-    const syllabusArray = data.flatMap(subject => 
-      subject.units.map(unit => ({
-        unit: unit.title,
-        topics: unit.topics.join(", ") // Convert array of topics into a comma-separated string
-      }))
-    );
-
-    setSyllabus(syllabusArray.length ? syllabusArray : [{ unit: "No syllabus available", topics: "" }]);
-  } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
+const SubjectCards = () => (
+  <div className="subject-cards-page">
+    <h1 className="title">WELCOME TO SCHOOL MANAGEMENT SYSTEM!</h1>
+    <p className="subtitle">PLEASE SELECT ANY SUBJECT TO CHECK ITS SYLLABUS</p>
     <div className="subject-cards-container">
       {subjects.map((subject, index) => (
-        <SubjectCard key={index} name={subject} onSelect={fetchSyllabus} />
+        <div className={`subject-card-wrapper ${index < 3 ? "column-one" : "column-two"}`} key={index}>
+          <SubjectCard name={subject} />
+        </div>
       ))}
-      {selectedSubject && (
-  <div className="syllabus-section">
-    <h3>{selectedSubject} Syllabus</h3>
-    {loading ? (
-      <p>Loading...</p>
-    ) : syllabus ? (
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Units</th>
-            <th>Topics</th>
-          </tr>
-        </thead>
-        <tbody>
-          {syllabus.map((item, index) => (
-            <tr key={index}>
-              <td>{item.unit}</td>
-              <td>{item.topics}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    ) : error ? (
-      <p className="error">{error}</p>
-    ) : null}
-  </div>
-)}
     </div>
-  );
-};
+  </div>
+);
 
 export default SubjectCards;
